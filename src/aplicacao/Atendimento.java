@@ -46,7 +46,49 @@ public class Atendimento {
 				System.out.println("Opção Inválida!!");
 			}
 			if (op == 1) {
-				log("Opção 1 - Recepcionar Clientes");
+				int numero = 0;
+				try {
+					numero = Integer.parseInt(JOptionPane.showInputDialog("NÚMERO DO CARTÃO: ", "0"));
+				} catch (NumberFormatException e) {
+					
+					continue;
+				}
+				aux = inicio;
+				boolean achou = false;
+				while (aux != null) {
+					if (aux.cartao == numero) {
+						achou = true;
+						JOptionPane.showMessageDialog(null, "Esse número do cartão já foi usado.\nFavor verificar!");
+						break;
+					}
+					aux = aux.prox;
+				}
+				if (achou == false) {
+					Atende novo = new Atende();
+					novo.cartao = numero;
+
+					try {
+						// ALTERAR PARA GRAVAR SEMPRE EM MAIÚSCULAS
+						novo.nome = JOptionPane.showInputDialog("NOME: ", "");
+						novo.sobreNome = JOptionPane.showInputDialog("SOBRENOME: ", "");
+						novo.valor = Double.parseDouble(JOptionPane.showInputDialog("VALOR: ", "0"));
+					} catch (NumberFormatException e) {						
+						continue;
+					}
+
+					if (inicio == null) {
+						inicio = novo;
+						fim = novo;
+					} else {
+						fim.prox = novo;
+						fim = novo;
+					}
+					JOptionPane.showMessageDialog(null,
+							"O cartão número " + novo.cartao + ", foi inserido para atendimento: ",
+							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+							log("Opção 1 - Recepcionar Clientes");
+				}
+				
 			}
 			if (op == 2) {
 				log("Opção 2 - Consultar clientes");
