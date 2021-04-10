@@ -1,3 +1,8 @@
+/*
+ * TODO
+ * 1 - Alterar para gravar sempre em maiúsculas na inclusão
+ * 2 - Criar um método de agende de erro para log das exceções
+ */
 package aplicacao;
 
 import java.text.DateFormat;
@@ -5,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class Atendimento {
 	static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -68,7 +75,6 @@ public class Atendimento {
 					novo.cartao = numero;
 
 					try {
-						// ALTERAR PARA GRAVAR SEMPRE EM MAIÚSCULAS
 						novo.nome = JOptionPane.showInputDialog("NOME: ", "");
 						novo.sobreNome = JOptionPane.showInputDialog("SOBRENOME: ", "");
 						novo.valor = Double.parseDouble(JOptionPane.showInputDialog("VALOR: ", "0"));
@@ -91,7 +97,23 @@ public class Atendimento {
 				
 			}
 			if (op == 2) {
-				log("Opção 2 - Consultar clientes");
+				if (inicio == null) {
+					JOptionPane.showMessageDialog(null,"O atendimento está vazio!", "Mensagem do Programa",JOptionPane.CLOSED_OPTION);;
+				} else {
+					JTextArea saida = new JTextArea(6, 45); // HEIGHT X WIDTH
+					JScrollPane scroll = new JScrollPane(saida);
+					saida.append("CARTÃO\t" + "NOME\t" + "SOBRENOME\t" + "VALOR\n");
+					saida.append("-------------------------------------------------------------------------\n");
+					aux = inicio;
+					while (aux != null) {
+						saida.append(aux.cartao + "\t" + aux.nome + "\t" + aux.sobreNome + "\t" + aux.valor + "\n");
+						aux = aux.prox;
+					}
+					saida.append("\n");
+					JOptionPane.showMessageDialog(null, scroll, "CONSULTAR DADOS DO ATENDIMENTO",
+							JOptionPane.CLOSED_OPTION);
+					log("Opção 2 - Consultar clientes");
+				}				
 			}
 			if (op == 3) {
 				log("Opção 3 - Atender clientes");
