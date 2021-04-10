@@ -78,6 +78,10 @@ public class Atendimento {
 						novo.nome = JOptionPane.showInputDialog("NOME: ", "");
 						novo.sobreNome = JOptionPane.showInputDialog("SOBRENOME: ", "");
 						novo.valor = Double.parseDouble(JOptionPane.showInputDialog("VALOR: ", "0"));
+						
+						novo.nome = novo.nome.toUpperCase();
+						novo.sobreNome = novo.sobreNome.toUpperCase();
+						
 					} catch (NumberFormatException e) {						
 						continue;
 					}
@@ -116,7 +120,15 @@ public class Atendimento {
 				}				
 			}
 			if (op == 3) {
-				log("Opção 3 - Atender clientes");
+				if (inicio == null) {
+					JOptionPane.showMessageDialog(null,"O atendimento está vazio!", "Mensagem do Programa",JOptionPane.CLOSED_OPTION);;
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"CARTÃO:  " + inicio.cartao + ", NOME: " + inicio.nome + " foi atendido(a)!",
+							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
+					inicio = inicio.prox;
+					log("Opção 3 - Atender clientes");
+				}
 			}
 			if (op == 4) {
 				log("Opção 4 - Liberar todos os clientes");
