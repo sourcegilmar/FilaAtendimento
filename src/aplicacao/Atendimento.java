@@ -289,6 +289,17 @@ public class Atendimento {
 				log("Opção 11 - Ver endereços hash");
 			}
 			if (op == 12) {
+				JTextArea saida = new JTextArea(8, 30); // HEIGHT X WIDTH
+				saida.append("\n");
+				saida.append("PROGRAMA DE ATENDIMENTO AO CLIENTE\n");
+				saida.append("-------------------------------------------------------------\n");
+				saida.append("Copyright (c) Byta Bug Informática Ltda\n");
+				saida.append("Programadores: Asdrubal, Indalécio e Gilmar\n");
+				saida.append("Fazer as devidas refatorações . . .");
+				saida.append("Versão 1.0\n");
+				saida.append("Data: ABRIL de 2021\n");
+				saida.append("\n");
+				JOptionPane.showMessageDialog(null, saida, "SOBRE O PROGRAMA", JOptionPane.CLOSED_OPTION);
 				log("Opção 12 - Sobre");
 			}
 		} while (op != 13);
