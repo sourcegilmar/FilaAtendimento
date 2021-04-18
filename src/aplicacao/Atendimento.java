@@ -265,6 +265,27 @@ public class Atendimento {
 				log("Opção 10 - Filtrar clientes por valor");
 			}
 			if (op == 11) {
+				if (inicio == null) {
+					JOptionPane.showMessageDialog(null, "O atendimento está vazio!", 
+							"Mensagem do Programa",	JOptionPane.CLOSED_OPTION);
+				} else {
+					JTextArea saida = new JTextArea(7, 45); // HEIGHT X WIDTH
+					JScrollPane scroll = new JScrollPane(saida);
+					saida.append("NOME\t" + "ENDEREÇO\tPROX\t\n");
+					saida.append("-------------------------------------------------------------\n");
+					aux = inicio;
+					while (aux != null) {
+						if (aux.prox != null)
+							saida.append(aux.nome + "\t" + aux.hashCode() + "\t" + aux.prox.hashCode() + "\n");
+						else
+							saida.append(aux.nome + "\t" + aux.hashCode() + "\tfim\n");
+
+						aux = aux.prox;
+					}
+					saida.append("\n");
+					JOptionPane.showMessageDialog(null, scroll, "CONSULTAR DADOS DO ATENDIMENTO",
+							JOptionPane.CLOSED_OPTION);
+				}
 				log("Opção 11 - Ver endereços hash");
 			}
 			if (op == 12) {
