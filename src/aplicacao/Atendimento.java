@@ -131,9 +131,17 @@ public class Atendimento {
 				}
 			}
 			if (op == 4) {
-				log("Opção 4 - Liberar todos os clientes");
+				if (inicio == null) {
+					JOptionPane.showMessageDialog(null,"O atendimento está vazio!", "Mensagem do Programa",JOptionPane.CLOSED_OPTION);;
+				} else {
+					inicio = null;
+					JOptionPane.showMessageDialog(null, " * * O ATENDIMENTO FOI LIBERADO * *", "MENSAGEM DO PROGRAMA",
+							JOptionPane.CLOSED_OPTION);
+					log("Opção 4 - Liberar todos os clientes");
+				}				
 			}
 			if (op == 5) {
+				
 				log("Opção 5 - Quantidade de clientes");
 			}
 			if (op == 6) {
@@ -171,5 +179,11 @@ public class Atendimento {
 		Date date = new Date();
 		return dateFormat.format(date);
 	}
+	
+	/*
+	 * Eclipse IDE 2019-12
+	 * Version: 2019-12 (4.14.0)
+	 * JavaSE-1.8	 * 
+	 */
 	
 }
