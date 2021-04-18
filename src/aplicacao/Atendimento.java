@@ -178,6 +178,20 @@ public class Atendimento {
 				log("Opção 6 - Localizar cliente por número");
 			}
 			if (op == 7) {
+				String nome = JOptionPane.showInputDialog("Nome do cliente", "");
+				aux = inicio;
+				int posicao = 1;
+				while (aux != null) {
+					if (aux.nome.equals(nome)) {
+						String texto = "CARTÃO: " + aux.cartao + "\n" + "NOME: " + aux.nome + "\n" + "SOBRENOME: "
+								+ aux.sobreNome + "\n" + "VALOR: " + aux.valor + "\n" + "POSIÇÃO: " + posicao
+								+ "a. POSIÇÃO";
+						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n" + texto, "MENSAGEM DO PROGRAMA",
+								JOptionPane.CLOSED_OPTION);
+					}
+					posicao++;
+					aux = aux.prox;
+				}
 				log("Opção 7 - Localizar cliente por nome");
 			}
 			if (op == 8) {
