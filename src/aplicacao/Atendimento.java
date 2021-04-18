@@ -200,28 +200,26 @@ public class Atendimento {
 			}
 			if (op == 8) {
 				if (inicio == null) {
-					JOptionPane.showMessageDialog(null, "O atendimento está vazio!", "Mensagem do Programa",
-							JOptionPane.CLOSED_OPTION);
+					JOptionPane.showMessageDialog(null, "O atendimento está vazio!", 
+							"Mensagem do Programa",	JOptionPane.CLOSED_OPTION);
 				} else {
 					aux = inicio;
 									
-					// Verifica se a pasta existe, se não existe, cria!
+					// Faz a verificação da existência da pasta
+					// se a pasta não existir => cria!
 					File file = new File("C:/DADOS");  
 					if (!file.exists()) {
 					    file.mkdirs();
-					}
-					
+					}					
 					try {
 						FileWriter arq = new FileWriter("c:\\Dados\\Atendimento.txt");
 						PrintWriter gravar = new PrintWriter(arq);
-
 						while (aux != null) {
-
 							gravar.printf("%d, %s, %s, %.2f %n", aux.cartao, aux.nome, aux.sobreNome, +aux.valor);
 							aux = aux.prox;
 						}
 						gravar.printf("%s %n", "--------------------------");
-						gravar.printf("%s %n", "copyright (c) by: Fulano de Tal, Sicrano de Tal");
+						gravar.printf("%s %n", "copyright (c) by: Professor Gilmar Borba");
 						arq.close();
 					} catch (IOException e) {
 						System.out.println("MENSAGEM / CLASS ArquivoTexto:\nErro ao tentar gravar no arquivo");
@@ -230,11 +228,11 @@ public class Atendimento {
 					JOptionPane.showMessageDialog(null, "ARQUIVO GRAVADO COM SUCESSO", "MENSAGEM DO SISTEMA",
 							JOptionPane.CLOSED_OPTION);
 				}
-				log("Opção 8 - Emitir relatório de clientes");
+				log("Opção 8 - Emitir relatório de clientes (Arquivos)");
 			}
 			if (op == 9) {
-				int resposta = JOptionPane.showConfirmDialog(null, "DESEJA VER ARQUIVO?", "MENSAGEM",
-						JOptionPane.YES_NO_OPTION);
+				int resposta = JOptionPane.showConfirmDialog(null, 
+						"DESEJA VER ARQUIVO?", "MENSAGEM",JOptionPane.YES_NO_OPTION);
 				if (resposta == JOptionPane.YES_OPTION) {
 					try {
 						Process pro = Runtime.getRuntime().exec("cmd.exe /c  c://Dados//Atendimento.txt");
@@ -243,7 +241,7 @@ public class Atendimento {
 						System.out.println("Erro . . . ");
 					}
 				}
-				log("Opção 9 - Ver relatório de clientes");
+				log("Opção 9 - Ver relatório de clientes (Arquivos)");
 			}
 			if (op == 10) {
 				log("Opção 10 - Filtrar clientes por valor");
