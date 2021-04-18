@@ -141,7 +141,17 @@ public class Atendimento {
 				}				
 			}
 			if (op == 5) {
-				
+				aux = inicio;
+				int n = 0;
+				double soma = 0;
+				while (aux != null) {
+					soma = soma + aux.valor;
+					aux = aux.prox;
+					n++;
+				}
+				JOptionPane.showMessageDialog(null,
+						"O ATENDIMENTO CONTÉM: " + n + " ELEMENTOS.\nVALOR TOTAL: " + soma + "\n",
+						"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
 				log("Opção 5 - Quantidade de clientes");
 			}
 			if (op == 6) {
