@@ -244,6 +244,24 @@ public class Atendimento {
 				log("Opção 9 - Ver relatório de clientes (Arquivos)");
 			}
 			if (op == 10) {
+				double filtro = Double.parseDouble(
+						JOptionPane.showInputDialog("FILTRAR ATENDIMENTOS PARA VALORES SUPERIORES A: ", ""));
+				JTextArea saida = new JTextArea(6, 45); // HEIGHT X WIDTH
+				JScrollPane scroll = new JScrollPane(saida);
+				saida.append("CARTÃO\t" + "NOME\t" + "SOBRENOME\t" + "VALOR\n");
+				saida.append("----------------------------------------------------------------------------\n");
+				aux = inicio;
+				int posicao = 1;
+				while (aux != null) {
+					if (aux.valor > filtro) {
+						saida.append(aux.cartao + "\t" + aux.nome + "\t" + aux.sobreNome + "\t" + aux.valor + "\n");
+					}
+					posicao++;
+					aux = aux.prox;
+				}
+				saida.append("\n");
+				JOptionPane.showMessageDialog(null, scroll, "ATENDIMENTOS COM VALORES SUPERIORES A: " + filtro,
+						JOptionPane.CLOSED_OPTION);
 				log("Opção 10 - Filtrar clientes por valor");
 			}
 			if (op == 11) {
