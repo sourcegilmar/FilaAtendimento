@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 
 public class Atendimento {
 	static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-	
+
 	private static class Atende {
 		public int cartao;
 		public String nome;
@@ -57,7 +57,7 @@ public class Atendimento {
 				try {
 					numero = Integer.parseInt(JOptionPane.showInputDialog("NÚMERO DO CARTÃO: ", "0"));
 				} catch (NumberFormatException e) {
-					
+
 					continue;
 				}
 				aux = inicio;
@@ -78,11 +78,11 @@ public class Atendimento {
 						novo.nome = JOptionPane.showInputDialog("NOME: ", "");
 						novo.sobreNome = JOptionPane.showInputDialog("SOBRENOME: ", "");
 						novo.valor = Double.parseDouble(JOptionPane.showInputDialog("VALOR: ", "0"));
-						
+
 						novo.nome = novo.nome.toUpperCase();
 						novo.sobreNome = novo.sobreNome.toUpperCase();
-						
-					} catch (NumberFormatException e) {						
+
+					} catch (NumberFormatException e) {
 						continue;
 					}
 
@@ -96,13 +96,15 @@ public class Atendimento {
 					JOptionPane.showMessageDialog(null,
 							"O cartão número " + novo.cartao + ", foi inserido para atendimento: ",
 							"MENSAGEM DO PROGRAMA", JOptionPane.CLOSED_OPTION);
-							log("Opção 1 - Recepcionar Clientes");
+					log("Opção 1 - Recepcionar Clientes");
 				}
-				
+
 			}
 			if (op == 2) {
 				if (inicio == null) {
-					JOptionPane.showMessageDialog(null,"O atendimento está vazio!", "Mensagem do Programa",JOptionPane.CLOSED_OPTION);;
+					JOptionPane.showMessageDialog(null, "O atendimento está vazio!", "Mensagem do Programa",
+							JOptionPane.CLOSED_OPTION);
+					;
 				} else {
 					JTextArea saida = new JTextArea(6, 45); // HEIGHT X WIDTH
 					JScrollPane scroll = new JScrollPane(saida);
@@ -117,11 +119,13 @@ public class Atendimento {
 					JOptionPane.showMessageDialog(null, scroll, "CONSULTAR DADOS DO ATENDIMENTO",
 							JOptionPane.CLOSED_OPTION);
 					log("Opção 2 - Consultar clientes");
-				}				
+				}
 			}
 			if (op == 3) {
 				if (inicio == null) {
-					JOptionPane.showMessageDialog(null,"O atendimento está vazio!", "Mensagem do Programa",JOptionPane.CLOSED_OPTION);;
+					JOptionPane.showMessageDialog(null, "O atendimento está vazio!", "Mensagem do Programa",
+							JOptionPane.CLOSED_OPTION);
+					;
 				} else {
 					JOptionPane.showMessageDialog(null,
 							"CARTÃO:  " + inicio.cartao + ", NOME: " + inicio.nome + " foi atendido(a)!",
@@ -132,13 +136,15 @@ public class Atendimento {
 			}
 			if (op == 4) {
 				if (inicio == null) {
-					JOptionPane.showMessageDialog(null,"O atendimento está vazio!", "Mensagem do Programa",JOptionPane.CLOSED_OPTION);;
+					JOptionPane.showMessageDialog(null, "O atendimento está vazio!", "Mensagem do Programa",
+							JOptionPane.CLOSED_OPTION);
+					;
 				} else {
 					inicio = null;
 					JOptionPane.showMessageDialog(null, " * * O ATENDIMENTO FOI LIBERADO * *", "MENSAGEM DO PROGRAMA",
 							JOptionPane.CLOSED_OPTION);
 					log("Opção 4 - Liberar todos os clientes");
-				}				
+				}
 			}
 			if (op == 5) {
 				aux = inicio;
@@ -155,6 +161,20 @@ public class Atendimento {
 				log("Opção 5 - Quantidade de clientes");
 			}
 			if (op == 6) {
+				int cartao = Integer.parseInt(JOptionPane.showInputDialog("Informe o número do cartão", "0"));
+				aux = inicio;
+				int posicao = 1;
+				while (aux != null) {
+					if (cartao == aux.cartao) {
+						String texto = "CARTÃO: " + aux.cartao + "\n" + "NOME: " + aux.nome + "\n" + "SOBRENOME: "
+								+ aux.sobreNome + "\n" + "VALOR: " + aux.valor + "\n" + "POSIÇÃO: " + posicao
+								+ "a. POSIÇÃO";
+						JOptionPane.showMessageDialog(null, "DADOS DO CLIENTE: \n\n" + texto, "MENSAGEM DO PROGRAMA",
+								JOptionPane.CLOSED_OPTION);
+					}
+					posicao++;
+					aux = aux.prox;
+				}
 				log("Opção 6 - Localizar cliente por número");
 			}
 			if (op == 7) {
@@ -176,24 +196,22 @@ public class Atendimento {
 				log("Opção 12 - Sobre");
 			}
 		} while (op != 13);
-		System.out.println("Programa finalizado em: "+getDateTime());
+		System.out.println("Programa finalizado em: " + getDateTime());
 		JOptionPane.showMessageDialog(null, "PROGRAMA FINALIZADO");
 	}
-	
+
 	public static void log(String texto) {
-		System.out.println("Acessou: "+texto+" - "+getDateTime());
-		
+		System.out.println("Acessou: " + texto + " - " + getDateTime());
+
 	}
-	
+
 	public static String getDateTime() {
 		Date date = new Date();
 		return dateFormat.format(date);
 	}
-	
+
 	/*
-	 * Eclipse IDE 2019-12
-	 * Version: 2019-12 (4.14.0)
-	 * JavaSE-1.8	 * 
+	 * Eclipse IDE 2019-12 Version: 2019-12 (4.14.0) JavaSE-1.8 *
 	 */
-	
+
 }
